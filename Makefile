@@ -8,10 +8,10 @@ data/20B_tokenizer.json:
 	mkdir -p data && cd data && curl -fL -O https://github.com/BlinkDL/ChatRWKV/raw/main/20B_tokenizer.json
 
 .PHONY: script
-script: rwkv.ex
+script: rwkv.exs
 
-rwkv.ex: rwkv.livemd
-	echo '#!/usr/bin/env elixir' > rwkv.ex
-	perl -ne 'print(/^```|^:ok$$/ ? "\n" : $$_) if /^```elixir$$/ ... /^```$$/' < rwkv.livemd >> rwkv.ex
-	mix format rwkv.ex
-	chmod +x rwkv.ex
+rwkv.exs: rwkv.livemd
+	echo '#!/usr/bin/env elixir' > rwkv.exs
+	perl -ne 'print(/^```|^:ok$$/ ? "\n" : $$_) if /^```elixir$$/ ... /^```$$/' < rwkv.livemd >> rwkv.exs
+	mix format rwkv.exs
+	chmod +x rwkv.exs
